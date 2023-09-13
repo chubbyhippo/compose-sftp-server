@@ -1,12 +1,8 @@
 services:
-  server:
-    build:
-      context: ./docker
-      args:
-        SSH_MASTER_USER: ${SSH_MASTER_USER}
-        SSH_MASTER_PASS: ${SSH_MASTER_PASS}
-    hostname: server
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - <host-dir>/upload:/home/foo/upload
     ports:
       - "2222:22"
-    volumes:
-      - ./uploads:/uploads
+    command: foo:pass:1001
